@@ -7,7 +7,7 @@ function Order (props) {
    let deleteFromCart = () => {
 
         props.removeFromCart(props.order)
-        console.log("working")
+        
        
    }    
 
