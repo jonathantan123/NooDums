@@ -38,9 +38,9 @@ class MainContainer extends React.Component {
                 {/* <MenuCardFront menu={this.state.menu}/> */} */}
                 <MenuContainer items={this.state.menuArray}/>
                 <ShoppingCartContainerJS/>
-                {/* <CheckoutForm/>
+                <CheckoutForm/>
             
-                {/* <Order/> */}
+                {/* <Order/>
                 {/* <SignUp/> */}
                 {/* <Login/>
                 <IndexContainer/> */}

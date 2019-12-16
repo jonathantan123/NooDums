@@ -2,11 +2,12 @@ import React from 'react';
 import { connect } from "react-redux"
 import { Item, Button } from 'semantic-ui-react'
 import Order from '../components/Order';
+import CheckoutForm from '../components/CheckoutForm';
 
 
 class ShoppingCartContainer extends React.Component {
 
-
+    
 
     renderShoppingCart =  () => {
         return this.props.cart.map((order) => {
@@ -23,7 +24,7 @@ class ShoppingCartContainer extends React.Component {
             </Item.Group>
             <h2>Order Total</h2>
             <h2>Tax</h2>
-            <Button> Checkout</Button>
+            <Button onClick={this.renderCheckout}> Checkout</Button>
             </div>
         )
     }

@@ -11,7 +11,7 @@ import { Provider } from "react-redux"
 
 const defaultState = {
     menuItems: [], 
-    user_id: 0, 
+    user_id: 1, 
     cart: []
 }
 const store = createStore(reducer)

@@ -1,5 +1,5 @@
 import React from 'react';
-
+import { connect } from 'react-redux'
 import { Form, Input, Select } from 'semantic-ui-react'
 import PaymentForm from './CreditCardForm';
 
@@ -8,11 +8,24 @@ import PaymentForm from './CreditCardForm';
 
 
 
-
 class CheckoutForm extends React.Component{
+    
 
     submitHandler= () => {
+        
         console.log("working")
+         fetch(`http://localhost:3000/api/v1/order_items`, {
+            method: "POST", 
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: this.props.user_id,
+                array: this.props.cart
+            })
+                
+        })
     }
 
     render() {
@@ -80,9 +93,22 @@ class CheckoutForm extends React.Component{
         )
     }
 
+    
+
 
 
 
 }
 
-export default CheckoutForm
+
+function msp(state) {
+    return (
+        {
+            cart: state.cart, 
+            user_id: state.user_id
+        }
+    )
+}
+
+
+export default connect(msp)(CheckoutForm)
