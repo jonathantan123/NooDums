@@ -28,7 +28,12 @@ function reducer (state=defaultState, action) {
         case "SET_MENU_ARRAY":
             return {...state, menuItems: action.payload}
             break; 
-    
+
+        case "ADD_TO_CART":
+            debugger
+                return {...state, cart: [...state.cart, action.payload]}
+                break; 
+
         default:
             return state 
             break;

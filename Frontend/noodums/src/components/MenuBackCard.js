@@ -1,50 +1,51 @@
 import React from 'react';
 import { Card, Icon, Image, Button, Menu } from 'semantic-ui-react'
+import { connect } from "react-redux"
 
-function MenuBackCard(props) {
+class  MenuBackCard extends React.Component {
 
-    let item = props.item 
 
-    debugger 
-
-    let addToCart = (item) => {
-        console.log(item)
-        
+    addToCart = () => {
+       this.props.addToCart(this.props.item)
     }
+ 
+    
 
-        return (
-            <Card>
-                <Card.Content>
-                <Card.Header textAlign='center'>Description</Card.Header>
-                    <Card.Description >
-                        {props.item.description}
-                    </Card.Description>
-                    </Card.Content>
-                    <Card.Content extra>
-                          <Menu secondary icon>
-                            <Menu.Item
-                            name='shopping cart'
-                            >
-                            <Icon name='cart plus' />
-                            </Menu.Item>
-                          </Menu>
-                     </Card.Content>
-            </Card>
 
-            //     <div class="content">
-            //         <div class="center aligned header">Description</div>
-            //         <div onClick={props.clickHandler} class="description">
-            //             <p>{props.item.description}</p>
-            //          </div>
-            //          <button onClick={addToCart} class="center aligned ui button"> Add to Cart </button>
-            //     </div>
-            // </div>
-           
+render () {
+    return (
+        <Card>
+            <Card.Content onClick={this.props.clickHandler}>
+            <Card.Header textAlign='center'>Description</Card.Header>
+                <Card.Description >
+                    {this.props.item.description}
+                </Card.Description>
+                </Card.Content>
+                <Card.Content extra>
+                      <Menu secondary icon>
+                        <Menu.Item 
+                        name='shopping cart'
+                        >
+                        < Icon onClick={this.addToCart} name='cart plus' />
+                        </Menu.Item>
+                      </Menu>
+                 </Card.Content>
+        </Card>
         )
+}
 
+    
     }
 
+    function mapDispatchToProps(dispatch) {  
+        return { 
+            addToCart: (item)=> {
+                dispatch({type: "ADD_TO_CART", payload: item })
+            }
+        }
+    }
 
+  
+    
 
-
-  export default MenuBackCard 
+  export default connect(null,mapDispatchToProps) (MenuBackCard) 
