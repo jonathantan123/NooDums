@@ -1,10 +1,8 @@
 
 import React from 'react';
+import { connect } from "react-redux"
 
 class Login extends React.Component {
-
-
-   input =  React.createRef()
 
     state = { 
         username: "", 
@@ -15,10 +13,8 @@ class Login extends React.Component {
         this.setState({
             [e.target.name] : e.target.value
         })
-    
     }
-
-    // on submit fetch and find/set the id of the current user 
+    // on submit fetch and find/set the id of the current user to redux 
 
     submitHandler=(e) => {
         e.preventDefault() 
@@ -39,11 +35,9 @@ class Login extends React.Component {
                 if(data.errors) {
                     alert("Incorrect Username/password")
                 } else {
-                    // this.props.setUserId(data.id)
+                this.props.login(data.id)    
                 }
-               
-            })
-         
+            })  
     }
 
     render() {
@@ -51,22 +45,29 @@ class Login extends React.Component {
                <div className="form-div">
                 <form onSubmit={this.submitHandler} class="ui medium form">
                                 <div class="ui stacked segment">
-                                        <div class="field">
-                                            <label>Email Address</label>
-                                            <input type="text" onChange={this.changeHandler} placeholder="Email Address" name="username"></input>
-                                        </div>
-                                        <div class="field">
-                                            <label>Password</label>
-                                            <input type="password" onChange={this.changeHandler} placeholder="password" name="password"></input>
-                                        </div>
-                                        <button class="ui fluid large grey submit button" type="submit"> Login</button>
-                            
+                                    <div class="field">
+                                        <label>Email Address</label>
+                                        <input type="text" onChange={this.changeHandler} placeholder="Email Address" name="username"></input>
+                                    </div>
+                                    <div class="field">
+                                        <label>Password</label>
+                                        <input type="password" onChange={this.changeHandler} placeholder="password" name="password"></input>
+                                    </div>
+                                    <button class="ui fluid large grey submit button" type="submit"> Login</button>
                                 </div>
                     </form>
                     </div>
         )
     }
+} 
+
+function mapDispatchToProps(dispatch) {  
+    return { 
+        login: (id)=> {
+            dispatch({type: "LOGIN", payload: id })
+        }
+    }
 }
 
-export default Login
+export default connect(null, mapDispatchToProps)(Login)
 

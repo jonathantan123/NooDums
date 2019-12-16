@@ -31,3 +31,19 @@ html, body {
   z-index: -1;
 overflow: hidden;
 }
+
+.menu-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.image_container{
+  overflow: hidden;
+}
+
+.card_image {
+  height: 110%;
+  width: 100%;
+}

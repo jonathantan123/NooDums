@@ -28,10 +28,11 @@ class Navbar extends React.Component {
        
             <div class="ui  menu">
                 <a class="item ">
-                    Home
+                    Sign Up  
                 </a>
                 <a class="item">
-                    Messages
+                    Menu 
+                    
                 </a>
 
                 <div class="right menu">

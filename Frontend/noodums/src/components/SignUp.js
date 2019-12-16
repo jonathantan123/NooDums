@@ -31,6 +31,7 @@ class SignUp extends React.Component {
         .then(resp => resp.json())
         .then(console.log)
     
+
         // this.props.routerprops.history.push(`/login`);
           
     }
