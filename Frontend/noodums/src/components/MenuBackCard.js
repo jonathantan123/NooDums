@@ -7,6 +7,8 @@ class  MenuBackCard extends React.Component {
 
     addToCart = () => {
        this.props.addToCart(this.props.item)
+       this.props.clickHandler()
+       
     }
  
     
@@ -24,17 +26,25 @@ render () {
                 <Card.Content extra>
                       <Menu secondary icon>
                         <Menu.Item 
+                        name='Price'
+                        >
+                        < Icon name='dollar sign' />
+                        {this.props.item.price}
+                        </Menu.Item>
+
+                        <Menu.Item 
                         name='shopping cart'
+                        position='right'
                         >
                         < Icon onClick={this.addToCart} name='cart plus' />
                         </Menu.Item>
                       </Menu>
+
                  </Card.Content>
         </Card>
         )
 }
-
-    
+  
     }
 
     function mapDispatchToProps(dispatch) {  

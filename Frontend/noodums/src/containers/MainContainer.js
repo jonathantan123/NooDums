@@ -6,6 +6,9 @@ import Navbar from "../components/NavBar"
 import MenuCardFront from '../components/MenuCardFront';
 import MenuContainer from './MenuContainer';
 import { connect } from 'react-redux'
+import ShoppingCartContainerJS from './ShoppingCartContainer';
+import Order from '../components/Order';
+import CheckoutForm from '../components/CheckoutForm';
 
 
 
@@ -32,9 +35,12 @@ class MainContainer extends React.Component {
     render() {
         return (
             <div className="main-container">
-            
-                {/* <MenuCardFront menu={this.state.menu}/> */}
+                {/* <MenuCardFront menu={this.state.menu}/> */} */}
                 <MenuContainer items={this.state.menuArray}/>
+                <ShoppingCartContainerJS/>
+                {/* <CheckoutForm/>
+            
+                {/* <Order/> */}
                 {/* <SignUp/> */}
                 {/* <Login/>
                 <IndexContainer/> */}

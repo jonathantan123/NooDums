@@ -12,7 +12,7 @@ class App extends React.Component{
         
         <div className="Main-container">
               <Navbar/>
-          <MainContainer/>
+              <MainContainer/>
         </div>
       )
     }

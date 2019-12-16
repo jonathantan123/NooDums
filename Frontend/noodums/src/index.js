@@ -30,8 +30,14 @@ function reducer (state=defaultState, action) {
             break; 
 
         case "ADD_TO_CART":
-            debugger
                 return {...state, cart: [...state.cart, action.payload]}
+                break; 
+                
+        case "REMOVE_FROM_CART":    
+          
+                return {...state, cart: [state.cart.filter((item) => item.id !== action.payload.id)]}
+                debugger
+                console.log("removed")
                 break; 
 
         default:

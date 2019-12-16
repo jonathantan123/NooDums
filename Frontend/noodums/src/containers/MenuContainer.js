@@ -32,8 +32,10 @@ class MenuContainer extends React.Component {
 }
 
 function mapStateToProps(state) {
-    return {menuItems: state.menuItems,
-    user_id: state.user_id}
+    return {
+        menuItems: state.menuItems,
+        user_id: state.user_id
+    }
 }
 
 
