@@ -12,7 +12,8 @@ import { Provider } from "react-redux"
 const defaultState = {
     menuItems: [], 
     user_id: 1, 
-    cart: []
+    cart: [], 
+    favorites: []
 }
 const store = createStore(reducer)
 
@@ -21,12 +22,7 @@ const store = createStore(reducer)
 function reducer (state=defaultState, action) {
     switch (action.type) {
         case "LOGIN": 
-            console.log("worked")
             return {...state, user_id: action.payload}
-            break; 
-
-        case "SET_MENU_ARRAY":
-            return {...state, menuItems: action.payload}
             break; 
 
         case "ADD_TO_CART":
@@ -35,6 +31,11 @@ function reducer (state=defaultState, action) {
                 
         case "REMOVE_FROM_CART":    
                 return {...state, cart: state.cart.filter((item) => item.id !== action.payload.id)}
+                break; 
+
+        case "ADD_TO_FAVORITES":     
+        debugger
+                return {...state, favorites: action.payload !== undefined ? action.payload: [] }
                 break; 
 
         default:

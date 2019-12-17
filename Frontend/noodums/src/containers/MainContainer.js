@@ -9,6 +9,7 @@ import { connect } from 'react-redux'
 import ShoppingCartContainerJS from './ShoppingCartContainer';
 import Order from '../components/Order';
 import CheckoutForm from '../components/CheckoutForm';
+import ProfileContainer from './ProfileContainer';
 
 
 
@@ -35,15 +36,16 @@ class MainContainer extends React.Component {
     render() {
         return (
             <div className="main-container">
-                {/* <MenuCardFront menu={this.state.menu}/> */} */}
-                <MenuContainer items={this.state.menuArray}/>
+                {/* <MenuCardFront menu={this.state.menu}/> */} 
+                {/* <MenuContainer items={this.state.menuArray}/>
                 <ShoppingCartContainerJS/>
-                <CheckoutForm/>
+                <CheckoutForm/> */}
+                <ProfileContainer/>
             
                 {/* <Order/>
                 {/* <SignUp/> */}
-                {/* <Login/>
-                <IndexContainer/> */}
+                <Login/>
+                {/* <IndexContainer/> */}
             </div>
         )
     }
