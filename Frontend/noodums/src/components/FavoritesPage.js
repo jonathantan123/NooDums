@@ -4,26 +4,28 @@ import Order from "./Order"
 
 
 function renderFaves(props) {
-debugger
 
-if (props.favorites) {
-        return(  props.favorites.map((fave) => {
+if (props.favorites.length !== 0 ) {
+    debugger
+        return(props.favorites.map((fave) => {
               return (<Order order={fave}/>)
           })
         )
-    } else {return (
+    } else {
+        return ( 
         <h1>You have no favorites yet! </h1>    
-    )}
+            )
+        }
 }
 
  function FavoritesPage (props) {
-
     return (
-    <div>asdsad{renderFaves()}</div>
-    )
+        <div>
+        {renderFaves(props)}
+        </div>
+        )
 
 }
-
 
 let mapStateToProps = (state) => {
     return {favorites: state.favorites}

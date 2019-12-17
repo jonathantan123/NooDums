@@ -1,49 +1,70 @@
 import React from 'react';
-
-class Navbar extends React.Component {
-
-    // logout= ()=> {
-    //     this.props.setUserId(0)
-    // }
-
-    // redirectSignup = () => {
-    //         this.props.routerprops.push(`/signup`);
-    //     }
-    // redirectLogin = () => {
-    //         this.props.routerprops.push(`/login`);
-    //     }
-    // redirecthome = () => {
-    //         this.props.routerprops.push(`/`);
-    //     }
-
-    // redirectPortfolios = () => {
-    //         this.props.routerprops.push(`/portfolios`);
-    //     }
+import  { Link } from "react-router-dom"
+import { Card, Icon, Image, Button, Menu, Input } from 'semantic-ui-react'
+import { connect } from 'react-redux'
 
 
 
-    render() {
+function Navbar (props) {
+
+
 
       return (
-       
-            <div class="ui  menu">
-                <a class="item ">
-                    Sign Up  
-                </a>
-                <a class="item">
-                    Menu 
-                    
-                </a>
+                <Menu secondary>
+                <Menu.Item
+                    name='home'
+                    as={ Link } name='Noodums' to='/'
+                />
+                
+                <Menu.Menu position='right'>
 
-                <div class="right menu">
-                    <div class="item"> My Bag </div>
-                    </div>
-            </div>
+                <Menu.Item 
+                    as={ Link } name='cart' to='/cart'
+                    name='cart' 
+                />
+
+                {props.user_id === 0? 
+                    <React.Fragment>
+                         <Menu.Item
+                            name='login'
+                            as={ Link } name='Login' to='/login'
+                        />
+                         <Menu.Item
+                            name='singup'
+                            as={ Link } name='Signup' to='/signup'
+                        />
+                    </React.Fragment>
+                :
+                <React.Fragment>
+                    <Menu.Item
+                            name='singup'
+                            as={ Link } name='logout' to='/home '
+                            onClick={props.logout}
+                        />
+                </React.Fragment>
+                
+                }
+                </Menu.Menu>
+            </Menu>
             
       )
     }
-  }
+
+    function msp(state) {
+        return (
+            {
+                user_id: state.user_id            }
+        )
+    }
 
 
+    function mdp(dispatch) {  
+        return { 
+            logout: ()=> {
+                dispatch({type: "LOGOUT"})
+            }
+        }
+    }
+    
 
-  export default Navbar;
+  export default connect(msp,mdp)(Navbar);

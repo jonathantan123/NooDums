@@ -37,8 +37,8 @@ class Login extends React.Component {
                 } else {
                     
                 this.props.login(data.data.id) 
-                 
                 this.props.addToFavorites(data.data.attributes.items)  
+
                 }
             })  
     }
