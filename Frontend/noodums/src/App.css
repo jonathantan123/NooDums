@@ -47,3 +47,8 @@ overflow: hidden;
   height: 110%;
   width: 100%;
 }
+
+.form_container {
+  display: flex;
+  justify-content: center;
+}

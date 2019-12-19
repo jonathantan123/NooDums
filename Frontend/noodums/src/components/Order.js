@@ -2,41 +2,52 @@ import React from 'react';
 import { Item, Image, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
 
-function Order (props) {
+class  Order  extends React.Component {
 
-   let deleteFromCart = () => {
+  state = {
+    removed: true 
+  }
 
-        props.removeFromCart(props.order)
+   deleteFromCart = () => {
+        this.props.removeFromCart(this.props.order.id)
+        this.setState({
+          removed: !this.state.removed
+        })
+   }   
+
+   render (){
+     
+     return (
+     
+     <Item.Group>
+        <Item>
+          <Item.Image size='medium' src={`${this.props.order.image}`} />
+          <Item.Content>
+         <Item.Header> {this.props.order.name}</Item.Header>
+     <Item.Meta></Item.Meta>
+            <Item.Description>
+              Quantity X {this.props.order.quantity}
+              <br></br>
+              Price ${this.props.order.price}.00
+            </Item.Description>
+            <Item.Extra>this</Item.Extra>
+          </Item.Content>
+        </Item>
+        <Button onClick={this.deleteFromCart}> Remove</Button>
+        </Item.Group>
         
-       
-   }    
+     )  
+   }
+   
 
-    return (
-    
-    <Item.Group>
-       <Item>
-         <Item.Image size='medium' src={`${props.order.image}`} />
-         <Item.Content>
-        <Item.Header> {props.order.name}</Item.Header>
-    <Item.Meta></Item.Meta>
-           <Item.Description>
-             <Image src='https://react.semantic-ui.com/images/wireframe/short-paragraph.png' />
-           </Item.Description>
-           <Item.Extra>this</Item.Extra>
-         </Item.Content>
-       </Item>
-       <Button onClick={deleteFromCart}> Remove</Button>
-       </Item.Group>
-       
-    )  
 }
 
 
 
 function mapDispatchToProps(dispatch) {
     return {
-        removeFromCart: (item) => {
-            dispatch({type: "REMOVE_FROM_CART", payload: item })
+        removeFromCart: (id) => {
+            dispatch({type: "REMOVE_FROM_CART", payload: id })
         }
     }
 }

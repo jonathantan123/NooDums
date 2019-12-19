@@ -7,14 +7,20 @@ import { connect } from 'react-redux'
 
 function Navbar (props) {
 
-
-
       return (
                 <Menu secondary>
                 <Menu.Item
                     name='home'
                     as={ Link } name='Noodums' to='/'
                 />
+                     {props.user_id !== 0? 
+                        <React.Fragment>
+                            <Menu.Item
+                            name='profile'
+                            as={ Link } name='Profile' to='/profile'
+                            />
+                        </React.Fragment>
+                        : null }
                 
                 <Menu.Menu position='right'>
 

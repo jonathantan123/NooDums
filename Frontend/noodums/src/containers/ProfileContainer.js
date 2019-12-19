@@ -1,6 +1,9 @@
 import React from 'react';
 import ProfleSideBar from '../components/ProfileSideBar';
 import FavoritesPage from '../components/FavoritesPage';
+import { Grid } from 'semantic-ui-react'
+import ProfilePage from '../components/ProfilePage';
+
 
 
 
@@ -19,22 +22,42 @@ class ProfileContainer extends React.Component {
 
     render() { 
 
-        // switch (this.state.activeItem) {
+        switch (this.state.activeItem) {
 
-        //     case value:
-                
-        //         break;
+            case "Favorite":
+                return(
+
+                    <React.Fragment>
+                                <ProfleSideBar setActive={this.setActive}/>
+                                <FavoritesPage/> 
+                    </React.Fragment>
+                )
+                break;
+
+            case "View/Edit Profile":
+                return(
+                    <React.Fragment>
+                        <ProfleSideBar setActive={this.setActive}/>
+                        <ProfilePage/>
+                    </React.Fragment>
+                )
+                break;
+
+            case "Past Orders":
+                return(
+                    <React.Fragment>
+                        <ProfleSideBar setActive={this.setActive}/>
+                        <ProfilePage/>
+                    </React.Fragment>
+                )
+                break;
         
-        //     default:
-        //         break;
-        // }
-
-        
-        return (
-        // <ProfleSideBar active={this.state.activeItem} setActive={this.setActive}/>
-            <FavoritesPage/>
-
-            )
+            default:
+                return(
+                    <ProfleSideBar setActive={this.setActive}/>
+                )
+                break;
+        }
     }
 
    

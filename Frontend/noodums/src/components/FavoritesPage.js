@@ -6,7 +6,7 @@ import Order from "./Order"
 function renderFaves(props) {
 
 if (props.favorites.length !== 0 ) {
-    debugger
+    
         return(props.favorites.map((fave) => {
               return (<Order order={fave}/>)
           })

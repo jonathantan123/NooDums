@@ -1,11 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Form, Input, Select } from 'semantic-ui-react'
-import PaymentForm from './CreditCardForm';
-
-
-
-
+import { Form, Input, Select, Divider, Grid } from 'semantic-ui-react'
+import PaymentForm from './PaymentForm';
 
 
 class CheckoutForm extends React.Component{
@@ -30,72 +26,53 @@ class CheckoutForm extends React.Component{
 
     render() {
         return(
+          <div className="form_container">
             <Form onSubmit={this.submitHandler}>
             <Form.Group widths='equal'>
             
               <Form.Field
-                id="order name"
+                id="first name"
                 control={Input}
-                label='First name'
+                label='First Name'
                 placeholder='First name'
               />
               <Form.Field
-                id='email_address'
+                id='last name'
                 control={Input}
-                label='Email address'
-                placeholder='Email address'
+                label='Last Name'
+                placeholder='Last Name'
               />
+              </Form.Group>
+
                 <Form.Field
                 id='phone number'
                 control={Input}
-                label='Phone number'
-                placeholder='Phone number'
+                label='Phone Number'
+                placeholder='Phone Number'
               />
-            </Form.Group>
+
+                <Form.Field
+                id='email address'
+                control={Input}
+                label='Email Address'
+                placeholder='Email Address'
+              />
+              <Divider/>
+              <h2>Payment</h2>
+              <Divider/>
 
             <Form.Group widths='equal'>
-            
-              <Form.Field
-                id="order name"
-                control={Input}
-                label='First name'
-                placeholder='First name'
-              />
-              <Form.Field
-                id='form-input-control-last-name'
-                control={Input}
-                label='Last name'
-                placeholder='Last name'
-              />
+                <PaymentForm />
             </Form.Group>
-
-            <Form.Group widths='equal'>
-            
-              <Form.Field
-                id="order name"
-                control={Input}
-                label='First name'
-                placeholder='First name'
-              />
-              <Form.Field
-                id='form-input-control-last-name'
-                control={Input}
-                label='Last name'
-                placeholder='Last name'
-              />
-            </Form.Group>
-
-            <Form.Group widths='equal'>
-                <PaymentForm/>
-            </Form.Group>
-            <Form.Button>Go</Form.Button>
+              <Grid>
+                <Grid.Row centered>
+                <Form.Button >Make me Dumplings</Form.Button>
+                </Grid.Row>
+              </Grid>
             </Form>
+          </div>
         )
     }
-
-    
-
-
 
 
 }

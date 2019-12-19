@@ -1,6 +1,9 @@
 
 import React from 'react';
 import { connect } from "react-redux"
+import { Redirect} from 'react-router-dom'
+
+
 
 class Login extends React.Component {
 
@@ -37,8 +40,9 @@ class Login extends React.Component {
                 } else {
                     
                 this.props.login(data.data.id) 
-                this.props.addToFavorites(data.data.attributes.items)  
-
+                this.props.addToFavorites(data.data.attributes.items)
+                this.props.getUserInfo(data.data.attributes)
+                
                 }
             })  
     }
@@ -56,7 +60,14 @@ class Login extends React.Component {
                                         <label>Password</label>
                                         <input type="password" onChange={this.changeHandler} placeholder="password" name="password"></input>
                                     </div>
-                                    <button class="ui fluid large grey submit button" type="submit"> Login</button>
+                                        <button class="ui fluid large grey submit button" type="submit"> Login</button>
+                                        {this.props.user_id !== 0 ?
+                                        <React.Fragment>
+                                            <Redirect to="/profile"/>
+                                        </React.Fragment>
+                                        :
+                                        null 
+                                        }
                                 </div>
                     </form>
                     </div>
@@ -73,11 +84,18 @@ function mapDispatchToProps(dispatch) {
 
         addToFavorites: (favorites) => {
             dispatch({type: "ADD_TO_FAVORITES", payload: favorites})
+        },
+
+        getUserInfo: (data) => {
+            dispatch({type: "GET_USER_INFO", payload: data})
         }
-
-
     }
 }
 
-export default connect(null, mapDispatchToProps)(Login)
+function mapStateToProps(state) {
+    return { 
+        user_id: state.user_id
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Login)
 

@@ -1,20 +1,28 @@
 import React from 'react';
 import { Card, Icon, Image, Button, Menu } from 'semantic-ui-react'
 import { connect } from "react-redux"
+import Dinero from 'dinero.js'
+
+
+
 
 class  MenuBackCard extends React.Component {
-
-
-    addToCart = () => {
-       this.props.addToCart(this.props.item)
-       this.props.clickHandler()
-       
-    }
- 
     
-
-
+    
+    addToCart = () => {
+        
+        this.props.addToCart(this.props.item.id)
+        this.props.clickHandler()
+        
+    }
+    
+    formatPrice = () => {
+        let price = Dinero({amount: this.props.item.price})
+        return price.toFormat(`$0.00`) 
+    }
+      
 render () {
+
     return (
         <Card>
             <Card.Content onClick={this.props.clickHandler}>
@@ -28,8 +36,7 @@ render () {
                         <Menu.Item 
                         name='Price'
                         >
-                        < Icon name='dollar sign' />
-                        {this.props.item.price}
+                        {this.formatPrice()}
                         </Menu.Item>
 
                         <Menu.Item 
@@ -49,8 +56,8 @@ render () {
 
     function mapDispatchToProps(dispatch) {  
         return { 
-            addToCart: (item)=> {
-                dispatch({type: "ADD_TO_CART", payload: item })
+            addToCart: (id)=> {
+                dispatch({type: "ADD_TO_CART", payload: id })
             }
         }
     }

@@ -13,32 +13,66 @@ const defaultState = {
     menuItems: [], 
     user_id: 0, 
     cart: [], 
-    favorites: []
+    favorites: [],
+    user_info: [], 
+    removed: false 
 }
 const store = createStore(reducer)
-
-
 
 function reducer (state=defaultState, action) {
     switch (action.type) {
         case "LOGIN": 
-            return {...state, user_id: action.payload}
+            return {...state,
+                 user_id: action.payload}
             break; 
 
         case "LOGOUT": 
             return {...state, user_id: 0}
             break; 
 
+        case "GET_USER_INFO": 
+            return {...state, user_info: action.payload}
+            break; 
+
         case "ADD_TO_CART":
-                return {...state, cart: [...state.cart, action.payload]}
-                break; 
+                let addedItem = state.menuItems.find(item => item.id === action.payload)
+
+                let existingItem= state.cart.find(item=> item.id === action.payload)
+                
+                if (!existingItem)  {
+                    
+                    addedItem.quantity = 1;
+                    return {
+                        ...state, cart: [...state.cart, addedItem]
+                    }
+                } else { 
+                    
+                    existingItem.quantity += 1 
+                    return {
+                        ...state, 
+                        cart: [...state.cart]
+                    }
+                }
+                break;
                 
         case "REMOVE_FROM_CART":    
-                return {...state, cart: state.cart.filter((item) => item.id !== action.payload.id)}
+        let itemToRemove= state.cart.find(item=> item.id === action.payload)
+                if(itemToRemove.quantity === 1 ) {
+                    return {...state, cart: state.cart.filter((item) => item.id !== action.payload)}
+                } else {
+                    itemToRemove.quantity -= 1 
+                    
+                    return{...state,  
+                        cart: [...state.cart]}
+                }
+                break; 
+
+        case "SET_MENU_ARRAY":    
+        
+                return {...state, menuItems: action.payload}
                 break; 
 
         case "ADD_TO_FAVORITES":     
-        debugger
                 return {...state, favorites: action.payload !== undefined ? action.payload: [] }
                 break; 
 
