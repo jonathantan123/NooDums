@@ -1,14 +1,21 @@
 import React from 'react';
-import { Card, Icon, Image, Button, Menu } from 'semantic-ui-react'
+import { Card, Icon, Image, Button, Menu, Modal, Header } from 'semantic-ui-react'
 import { connect } from "react-redux"
 import Dinero from 'dinero.js'
 
-
-
-
 class  MenuBackCard extends React.Component {
+
+    state = {
+        show: false 
+    }
+
+    clickHandler= () => {
+        this.setState({
+            show: !this.state.show
+        })
+    }
     
-    
+ 
     addToCart = () => {
         
         this.props.addToCart(this.props.item.id)
@@ -43,7 +50,27 @@ render () {
                         name='shopping cart'
                         position='right'
                         >
-                        < Icon onClick={this.addToCart} name='cart plus' />
+                            <Modal trigger={<Button 
+                                            onClick={this.clickHandler}
+                                            animated='fade'>
+                                            <Button.Content hidden>Add</Button.Content>
+                                            <Button.Content visible>
+                                             <Icon name='cart plus' />
+                                            </Button.Content>
+                                            </Button>} basic size='small'>
+                                <Header icon='cart plus' content='Add to Cart' />
+                                <Modal.Content>
+                                <p>
+                                    Would you like to add this item to your cart? 
+                                </p>
+                                </Modal.Content>
+                                <Modal.Actions>
+                                <Button color='green' inverted
+                                onClick={this.addToCart}>
+                                    <Icon name='checkmark' /> Yes!
+                                </Button>
+                                </Modal.Actions>
+                            </Modal>
                         </Menu.Item>
                       </Menu>
 
@@ -61,8 +88,5 @@ render () {
             }
         }
     }
-
-  
-    
 
   export default connect(null,mapDispatchToProps) (MenuBackCard) 

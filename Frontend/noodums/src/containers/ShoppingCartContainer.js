@@ -9,10 +9,6 @@ import Dinero from 'dinero.js'
 
 class ShoppingCartContainer extends React.Component {
 
-
-    
-
-
     subTotal= () => {
 
         let subtotal = Dinero({amount: this.props.cart.reduce((sum, obj) => {
@@ -40,10 +36,6 @@ class ShoppingCartContainer extends React.Component {
         })
         ) 
     } 
-
-    componentDidUpdate(){
-
-    }
 
     render() { 
  

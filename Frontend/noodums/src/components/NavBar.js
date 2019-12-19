@@ -44,7 +44,7 @@ function Navbar (props) {
                 <React.Fragment>
                     <Menu.Item
                             name='singup'
-                            as={ Link } name='logout' to='/home '
+                            as={ Link } name='logout' to='/ '
                             onClick={props.logout}
                         />
                 </React.Fragment>

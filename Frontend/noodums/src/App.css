@@ -3,8 +3,8 @@ html, body {
 }
 
 
-/* 
 
+/* 
 .main-container {
   display: flex;
   flex-wrap: wrap;
@@ -48,7 +48,15 @@ overflow: hidden;
   width: 100%;
 }
 
-.form_container {
+.image_container {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  align-content: center;
+  position: relative;
+  align-items: center;
+  flex-wrap: nowrap;
+
 }
+
+
+
