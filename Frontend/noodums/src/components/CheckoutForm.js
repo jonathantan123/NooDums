@@ -1,14 +1,36 @@
 import React from 'react';
 import { connect } from 'react-redux'
-import { Form, Input, Select, Divider, Grid } from 'semantic-ui-react'
+import { Form, Input, Select, Divider, Grid, Header } from 'semantic-ui-react'
 import PaymentForm from './PaymentForm';
+import { compose } from 'redux'
+import  {injectStripe, CardElement} from 'react-stripe-elements';
+import Cards from 'react-credit-cards';
+import 'react-credit-cards/es/styles-compiled.css';
+
+
+
 
 
 class CheckoutForm extends React.Component{
+
+  
+
+  handleInputFocus = (e) => {
+    this.setState({ focus: e.target.name });
+  }
+  
+  handleInputChange = (e) => {
+    debugger
+    const { name, value } = e.target;
     
+    this.setState({ [name]: value });
+  }
+
 
     submitHandler= () => {
-        
+
+      let stripe = window.Stripe("pk_test_nN7xRtMVqkrqGYbZkpHkttjB00xj4HmkBz")
+  
         console.log("working")
          fetch(`http://localhost:3000/api/v1/order_items`, {
             method: "POST", 
@@ -17,11 +39,34 @@ class CheckoutForm extends React.Component{
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({
-                user_id: this.props.user_id,
+                user_id: this.props.user_id, 
                 array: this.props.cart
-            })
-                
+            })      
         })
+
+        
+         fetch(`http://localhost:3000/charges`, {
+            method: "POST", 
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              total: this.props.total
+            })      
+        })
+        .then(resp => resp.json())
+        .then((data) => {
+
+          stripe.redirectToCheckout({
+            
+            sessionId: data.id
+          })
+
+          debugger
+          console.log(data)
+        })
+
     }
 
     render() {
@@ -58,15 +103,12 @@ class CheckoutForm extends React.Component{
                 placeholder='Email Address'
               />
               <Divider/>
-              <h2>Payment</h2>
+              <Header as='h3' textAlign='center'> Payment </Header>
               <Divider/>
-
-            <Form.Group widths='equal'>
-                <PaymentForm />
-            </Form.Group>
+             
               <Grid>
                 <Grid.Row centered>
-                <Form.Button >Make me Dumplings</Form.Button>
+                <Form.Button >Proceed to Payment</Form.Button>
                 </Grid.Row>
               </Grid>
             </Form>
@@ -82,10 +124,13 @@ function msp(state) {
     return (
         {
             cart: state.cart, 
-            user_id: state.user_id
+            user_id: state.user_id, 
+            total: state.total
         }
     )
 }
 
 
-export default connect(msp)(CheckoutForm)
+export default compose(
+  connect(msp),
+  injectStripe)(CheckoutForm)

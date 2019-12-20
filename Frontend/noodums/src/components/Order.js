@@ -1,6 +1,8 @@
 import React from 'react';
 import { Item, Image, Button } from 'semantic-ui-react'
 import { connect } from 'react-redux'
+import Dinero from 'dinero.js'
+
 
 class  Order  extends React.Component {
 
@@ -15,6 +17,11 @@ class  Order  extends React.Component {
         })
    }   
 
+   formatPrice = () => {
+    let price = Dinero({amount: this.props.order.price})
+    return price.toFormat(`$0.00`) 
+}
+
    render (){
      
      return (
@@ -28,7 +35,7 @@ class  Order  extends React.Component {
             <Item.Description>
               Quantity X {this.props.order.quantity}
               <br></br>
-              Price ${this.props.order.price}.00
+              Price: {this.formatPrice()}
             </Item.Description>
             <Item.Extra>this</Item.Extra>
           </Item.Content>
@@ -39,7 +46,6 @@ class  Order  extends React.Component {
      )  
    }
    
-
 }
 
 

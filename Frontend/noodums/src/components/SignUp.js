@@ -158,7 +158,7 @@ class SignUp extends React.Component {
                 </Grid>
                 </Form>
 
-                {this.props.user_id !== 0 ?
+                {this.props.user_id !== 1 ?
                     <React.Fragment>
                         <Redirect to="/profile"/>
                     </React.Fragment>

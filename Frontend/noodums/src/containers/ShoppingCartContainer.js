@@ -25,8 +25,11 @@ class ShoppingCartContainer extends React.Component {
       }
 
     total = () => {
-     return  this.subTotal().add((this.tax()))
-    }
+        
+        let total = this.subTotal().add((this.tax()))
+        this.props.setTotal(total.getAmount())
+        return total 
+    }  
 
 
     renderShoppingCart =  () => {
@@ -64,4 +67,14 @@ function msp(state) {
     )
 }
 
-export default connect(msp) (ShoppingCartContainer)
+function mapDispatchToProps(dispatch) {
+    return {
+        setTotal: (price) => {
+            dispatch({type: "SET_TOTAL", payload: price })
+        }
+    }
+}
+
+
+
+export default connect(msp, mapDispatchToProps) (ShoppingCartContainer)

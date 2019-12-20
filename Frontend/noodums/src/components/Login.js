@@ -61,7 +61,7 @@ class Login extends React.Component {
                                         <input type="password" onChange={this.changeHandler} placeholder="password" name="password"></input>
                                     </div>
                                         <button class="ui fluid large grey submit button" type="submit"> Login</button>
-                                        {this.props.user_id !== 0 ?
+                                        {this.props.user_id !== 1 ?
                                         <React.Fragment>
                                             <Redirect to="/profile"/>
                                         </React.Fragment>

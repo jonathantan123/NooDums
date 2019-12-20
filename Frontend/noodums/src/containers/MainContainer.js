@@ -11,6 +11,7 @@ import CheckoutForm from '../components/CheckoutForm';
 import ProfileContainer from './ProfileContainer';
 import { Route, Switch } from 'react-router-dom'
 import { connect } from "react-redux"
+import {Elements, StripeProvider} from 'react-stripe-elements';
 
 class MainContainer extends React.Component {
 
@@ -77,9 +78,11 @@ renderProfile = () => {
 }
 renderCheckout = () => {
     return (
-        <React.Fragment>
-            <CheckoutForm/>
-       </React.Fragment>
+        <StripeProvider apiKey="pk_test_nN7xRtMVqkrqGYbZkpHkttjB00xj4HmkBz">
+            <Elements>
+                 <CheckoutForm />
+          </Elements>
+       </StripeProvider>
     )
 }
 

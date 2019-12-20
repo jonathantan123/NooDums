@@ -13,7 +13,7 @@ function Navbar (props) {
                     name='home'
                     as={ Link } name='Noodums' to='/'
                 />
-                     {props.user_id !== 0? 
+                     {props.user_id !== 1? 
                         <React.Fragment>
                             <Menu.Item
                             name='profile'
@@ -29,7 +29,7 @@ function Navbar (props) {
                     name='cart' 
                 />
 
-                {props.user_id === 0? 
+                {props.user_id === 1? 
                     <React.Fragment>
                          <Menu.Item
                             name='login'
@@ -43,7 +43,7 @@ function Navbar (props) {
                 :
                 <React.Fragment>
                     <Menu.Item
-                            name='singup'
+                            name='logout'
                             as={ Link } name='logout' to='/ '
                             onClick={props.logout}
                         />

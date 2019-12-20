@@ -11,11 +11,12 @@ import { Provider } from "react-redux"
 
 const defaultState = {
     menuItems: [], 
-    user_id: 0, 
+    user_id: 1, 
     cart: [], 
     favorites: [],
     user_info: [], 
-    removed: false 
+    removed: false, 
+    total: "" 
 }
 const store = createStore(reducer)
 
@@ -27,7 +28,7 @@ function reducer (state=defaultState, action) {
             break; 
 
         case "LOGOUT": 
-            return {...state, user_id: 0}
+            return {...state, user_id: 1}
             break; 
 
         case "GET_USER_INFO": 
@@ -74,6 +75,11 @@ function reducer (state=defaultState, action) {
 
         case "ADD_TO_FAVORITES":     
                 return {...state, favorites: action.payload !== undefined ? action.payload: [] }
+                break; 
+
+        case "SET_TOTAL":     
+                debugger
+                return {...state, total: action.payload }
                 break; 
 
         default:

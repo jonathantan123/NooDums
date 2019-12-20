@@ -9,11 +9,14 @@ class App extends React.Component{
 
     render() {
       return( 
-        
+       
+
         <div className="Main-container">
               <Navbar/>
               <MainContainer/>
         </div>
+      
+
       )
     }
 }
