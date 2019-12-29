@@ -117,6 +117,7 @@ class SignUp extends React.Component {
                     control={Input}
                     onChange={this.changeHandler}
                     label='Email Address'
+                    
                     placeholder='Email Address'
                 />
 
@@ -170,7 +171,7 @@ class SignUp extends React.Component {
 
           </div>
 
-        // 
+ 
         )
     }
 }

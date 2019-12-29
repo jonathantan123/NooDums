@@ -1,10 +1,8 @@
 
 import React from 'react';
 import { connect } from "react-redux"
-import { Table } from 'semantic-ui-react'
-
-
-
+import { Table, Button } from 'semantic-ui-react'
+import EditForm from './EditForm';
 
 
 
@@ -13,23 +11,23 @@ function ProfilePage (props) {
 return(
     <React.Fragment>  
 
-        {props.user_info.first_name}  
         <Table celled>
             <Table.Header>
             <Table.Row>
                 <Table.HeaderCell colSpan='3'> </Table.HeaderCell>
             </Table.Row>
             </Table.Header>
-        <h2>Name: </h2>
+                <h2>Name: {props.user_info.first_name} {props.user_info.last_name}  </h2>
+                <h2>Email Address: {props.user_info.email_address} </h2>
+                <h2>Phone Number: {props.user_info.phone_number} </h2>
+                <Button>Edit Info</Button>
         </Table>
 
-    </React.Fragment>
-     
-    
+        <EditForm/>
+
+    </React.Fragment>    
     )
     
-
-
 }
 function msp(state) {
     return (

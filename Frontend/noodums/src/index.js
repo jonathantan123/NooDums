@@ -11,6 +11,7 @@ import { Provider } from "react-redux"
 
 const defaultState = {
     menuItems: [], 
+    allOrders:[],
     user_id: 1, 
     cart: [], 
     favorites: [],
@@ -32,6 +33,8 @@ function reducer (state=defaultState, action) {
             break; 
 
         case "GET_USER_INFO": 
+        debugger 
+        
             return {...state, user_info: action.payload}
             break; 
 

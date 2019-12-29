@@ -44,7 +44,7 @@ function Navbar (props) {
                 <React.Fragment>
                     <Menu.Item
                             name='logout'
-                            as={ Link } name='logout' to='/ '
+                            as={ Link } name='logout' to='/'
                             onClick={props.logout}
                         />
                 </React.Fragment>
@@ -59,10 +59,9 @@ function Navbar (props) {
     function msp(state) {
         return (
             {
-                user_id: state.user_id            }
+                user_id: state.user_id }
         )
     }
-
 
     function mdp(dispatch) {  
         return { 

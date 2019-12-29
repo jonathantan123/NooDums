@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux'
 import { Form, Input, Select, Divider, Grid, Header } from 'semantic-ui-react'
-import PaymentForm from './PaymentForm';
 import { compose } from 'redux'
 import  {injectStripe, CardElement} from 'react-stripe-elements';
 import Cards from 'react-credit-cards';

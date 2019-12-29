@@ -38,7 +38,7 @@ class Login extends React.Component {
                 if(data.errors) {
                     alert("Incorrect Username/password")
                 } else {
-                    
+                      
                 this.props.login(data.data.id) 
                 this.props.addToFavorites(data.data.attributes.items)
                 this.props.getUserInfo(data.data.attributes)
