@@ -7,12 +7,7 @@ import Cards from 'react-credit-cards';
 import 'react-credit-cards/es/styles-compiled.css';
 
 
-
-
-
 class CheckoutForm extends React.Component{
-
-  
 
   handleInputFocus = (e) => {
     this.setState({ focus: e.target.name });

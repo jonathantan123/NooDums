@@ -8,12 +8,7 @@ import { Button } from 'semantic-ui-react'
 
 function pastOrder (props) {
 
-    let formatDate = () => {
-        debugger
-       return  moment().format("2019-12-18")
 
-
-    }
 
 
 return(
