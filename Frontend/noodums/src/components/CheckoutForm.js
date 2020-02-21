@@ -21,8 +21,7 @@ class CheckoutForm extends React.Component{
 
       let stripe = window.Stripe("pk_test_nN7xRtMVqkrqGYbZkpHkttjB00xj4HmkBz")
   
-        console.log("working")
-         fetch(`http://localhost:3000/api/v1/order_items`, {
+      fetch(`http://localhost:3000/api/v1/order_items`, {
             method: "POST", 
             headers: {
                 'Accept': 'application/json',
@@ -49,7 +48,6 @@ class CheckoutForm extends React.Component{
         .then((data) => {
 
           stripe.redirectToCheckout({
-            
             sessionId: data.id
           })
          
