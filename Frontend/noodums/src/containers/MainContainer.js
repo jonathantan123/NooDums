@@ -26,8 +26,6 @@ class MainContainer extends React.Component {
 
             this.props.setMenuArray(data)
             
-
-
             this.setState({
                 menuArray: data,
                 isLoading: !this.state.isLoading
@@ -86,9 +84,6 @@ renderCheckout = () => {
 }
 
 
-
-
-
 ///-----------------------Routes--------------------------------------///
     render() {
         return (
@@ -120,16 +115,7 @@ renderCheckout = () => {
         )
     }
 
-
-
-
-
-
-
-
-
 }
-
 
 function mapDispatchToProps(dispatch) {
     return {
@@ -138,11 +124,5 @@ function mapDispatchToProps(dispatch) {
         }
     }
 }
-
-// function mapStateToProps(state) {
-//     return { 
-        
-//     }
-// }
 
 export default connect(null,mapDispatchToProps)(MainContainer)

@@ -3,8 +3,6 @@ import { connect } from 'react-redux'
 import { Form, Input, Select, Divider, Grid, Header } from 'semantic-ui-react'
 import { compose } from 'redux'
 import  {injectStripe, CardElement} from 'react-stripe-elements';
-import Cards from 'react-credit-cards';
-import 'react-credit-cards/es/styles-compiled.css';
 
 
 class CheckoutForm extends React.Component{
@@ -14,9 +12,7 @@ class CheckoutForm extends React.Component{
   }
   
   handleInputChange = (e) => {
-    debugger
     const { name, value } = e.target;
-    
     this.setState({ [name]: value });
   }
 
@@ -56,9 +52,7 @@ class CheckoutForm extends React.Component{
             
             sessionId: data.id
           })
-
-          debugger
-          console.log(data)
+         
         })
 
     }

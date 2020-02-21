@@ -1,14 +1,9 @@
 import React from 'react';
 import ProfleSideBar from '../components/ProfileSideBar';
 import FavoritesPage from '../components/FavoritesPage';
-import { Grid } from 'semantic-ui-react'
 import ProfilePage from '../components/ProfilePage';
 import {connect} from "react-redux"
 import PastOrder from '../components/PastOrder';
-
-
-
-
 
 
 class ProfileContainer extends React.Component {
@@ -23,7 +18,6 @@ class ProfileContainer extends React.Component {
     }
 
     renderPastOrders = () => {
-        debugger 
         return( 
             this.props.user_info.orders.map((order) => {
                 return (
@@ -31,7 +25,6 @@ class ProfileContainer extends React.Component {
           )}))
 
     }
-
 
     render() { 
 
@@ -45,7 +38,6 @@ class ProfileContainer extends React.Component {
                                 <FavoritesPage/> 
                     </React.Fragment>
                 )
-                break;
 
             case "View/Edit Profile":
                 return(
@@ -54,7 +46,7 @@ class ProfileContainer extends React.Component {
                         <ProfilePage/>
                     </React.Fragment>
                 )
-                break;
+                
 
             case "Past Orders":
                     
@@ -66,28 +58,22 @@ class ProfileContainer extends React.Component {
                       
                     </React.Fragment>
                 )
-                break;
-        
+                
             default:
                 return(
                     <ProfleSideBar setActive={this.setActive}/>
                 )
-                break;
+                
         }
     }
 
-   
 }
 
 
 function msp(state) {
-
     return {
         user_info: state.user_info
     }
 }
-
-
-
 
 export default connect(msp)(ProfileContainer)

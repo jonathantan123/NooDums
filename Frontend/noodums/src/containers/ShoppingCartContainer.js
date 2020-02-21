@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from "react-redux"
 import { Item, Button } from 'semantic-ui-react'
 import Order from '../components/Order';
-import CheckoutForm from '../components/CheckoutForm';
 import  { Link } from "react-router-dom"
 import Dinero from 'dinero.js'
 
@@ -14,7 +13,6 @@ class ShoppingCartContainer extends React.Component {
         let subtotal = Dinero({amount: this.props.cart.reduce((sum, obj) => {
             return  sum + obj.price*(obj.quantity) 
          }, 0)  }) 
-
 
         return subtotal
       

@@ -2,11 +2,7 @@ import React from "react"
 import { Form, Button} from 'semantic-ui-react'
 import { connect } from "react-redux"
 
-
-
-
 class EditForm extends React.Component{
-
 
     state = { 
         first_name: "", 
@@ -26,7 +22,6 @@ class EditForm extends React.Component{
 
       submitHandler=(e) => {
         e.preventDefault()
-        debugger
         if(this.phoneIsValid(this.state.phone_number)){
             fetch(`http://localhost:3000/api/v1/users/${this.props.user_id}`, {
                 method: "PATCH", 
@@ -72,11 +67,9 @@ class EditForm extends React.Component{
                 </Form.Field>
                 <Button type='submit'>Submit</Button>
           </Form>
-        )
+            )
+        }
     }
-
-}
-
 
 function msp(state) {
     return (

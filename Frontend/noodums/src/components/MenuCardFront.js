@@ -15,7 +15,6 @@ class MenuCardFront extends React.Component{
         })
 
     }
-
  
     render() {
         return (
@@ -29,10 +28,9 @@ class MenuCardFront extends React.Component{
             </Card>
         }
             </React.Fragment>
-        )
+            )
+        }
     }
-
-}
 
 
   export default MenuCardFront 

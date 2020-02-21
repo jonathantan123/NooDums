@@ -5,7 +5,6 @@ import { Table, Button } from 'semantic-ui-react'
 import EditForm from './EditForm';
 
 
-
 function ProfilePage (props) {
 
 return(

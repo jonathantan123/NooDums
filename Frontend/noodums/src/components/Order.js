@@ -45,9 +45,8 @@ class  Order  extends React.Component {
         
      )  
    }
-   
+  
 }
-
 
 
 function mapDispatchToProps(dispatch) {
@@ -57,7 +56,5 @@ function mapDispatchToProps(dispatch) {
         }
     }
 }
-
-
 
   export default connect(null, mapDispatchToProps)(Order) 

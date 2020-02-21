@@ -76,10 +76,9 @@ render () {
 
                  </Card.Content>
         </Card>
-        )
-}
-  
+      )
     }
+ }
 
     function mapDispatchToProps(dispatch) {  
         return { 

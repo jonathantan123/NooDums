@@ -13,7 +13,6 @@ class MenuContainer extends React.Component {
         }))
     }
     
-
     render() {
      
         return (
@@ -28,7 +27,6 @@ class MenuContainer extends React.Component {
         )
     }
 
-
 }
 
 function mapStateToProps(state) {
@@ -37,6 +35,5 @@ function mapStateToProps(state) {
         user_id: state.user_id
     }
 }
-
 
 export default connect(mapStateToProps)(MenuContainer)
